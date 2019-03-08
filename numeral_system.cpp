@@ -14,17 +14,17 @@ void quick_tobinary(int n){
 void numeral_convert(int decimal, const int convert){
     string r;
     int i = 0;
-    
-    while (decimal != 0)
-    {
-        int remainder = 0;
+    int remainder;
+
+    while (decimal != 0){
         remainder = decimal % convert;
 
-        if (remainder<10)
+        if (remainder < 10)
             r = to_string(remainder) + r;
         else
         {
-            r = (char)(remainder + 45);
+            char c = remainder + 55;
+            r = string(1, c) + r;
         }
         i++;
         decimal = decimal / convert;
@@ -34,6 +34,7 @@ void numeral_convert(int decimal, const int convert){
 
 
 int main(){
+    
     int decimal = 0;
     int c = 0;
     cout << "input a integer number: ___ (decimal)" << endl;
@@ -45,6 +46,7 @@ int main(){
             << "  -Input 16 : Hexadecimal!" << endl;
     cin >> c;
     numeral_convert(decimal, c);
+    
     //quick_tobinary(decimal);
     return 0;
 }
